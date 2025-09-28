@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/><title>404: This page could not be found</title><meta name="next-head-count" content="3"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="format-detection" content="telephone=no"/><meta name="msapplication-tap-highlight" content="no"/><link rel="dns-prefetch" href="//fonts.googleapis.com"/><link rel="dns-prefetch" href="//fonts.gstatic.com"/><link rel="preload" as="style" data-href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"/><noscript><link rel="stylesheet" data-href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"/></noscript><link rel="manifest" href="/manifest.json"/><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6366f1"/><meta name="msapplication-TileColor" content="#6366f1"/><meta name="msapplication-config" content="/browserconfig.xml"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"待办清单","description":"一个现代化的待办事项管理应用，帮助你高效管理日常任务","url":"http://localhost:3000","applicationCategory":"ProductivityApplication","operatingSystem":"Web","browserRequirements":"Requires JavaScript. Requires HTML5.","permissions":"localStorage","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}}</script><style>
+                /* 关键CSS - 防止FOUC */
+                * {
+                  box-sizing: border-box;
+                }
+
+                html {
+                  -webkit-text-size-adjust: 100%;
+                  -ms-text-size-adjust: 100%;
+                  text-size-adjust: 100%;
+                }
+
+                body {
+                  margin: 0;
+                  padding: 0;
+                  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                    sans-serif;
+                  -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
+                  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  min-height: 100vh;
+                  color: #1f2937;
+                  line-height: 1.6;
+                }
+
+                /* 加载指示器 */
+                .loading-indicator {
+                  position: fixed;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  color: white;
+                  font-size: 1.125rem;
+                  text-align: center;
+                  z-index: 9999;
+                }
+
+                .loading-spinner {
+                  width: 40px;
+                  height: 40px;
+                  border: 4px solid rgba(255, 255, 255, 0.3);
+                  border-top: 4px solid white;
+                  border-radius: 50%;
+                  animation: spin 1s linear infinite;
+                  margin: 0 auto 1rem;
+                }
+
+                @keyframes spin {
+                  0% { transform: rotate(0deg); }
+                  100% { transform: rotate(360deg); }
+                }
+
+                /* 无JavaScript降级样式 */
+                .no-js {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  min-height: 100vh;
+                  text-align: center;
+                  color: white;
+                  padding: 2rem;
+                }
+
+                .no-js-content {
+                  background: rgba(255, 255, 255, 0.1);
+                  padding: 2rem;
+                  border-radius: 1rem;
+                  backdrop-filter: blur(10px);
+                  border: 1px solid rgba(255, 255, 255, 0.2);
+                  max-width: 400px;
+                }
+
+                /* 减少动画偏好 */
+                @media (prefers-reduced-motion: reduce) {
+                  *, *::before, *::after {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                  }
+                }
+
+                /* 深色主题偏好 */
+                @media (prefers-color-scheme: dark) {
+                  body {
+                    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+                  }
+                }
+              </style><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-78c92fac7aa8fdd8.js"></script><script src="/_next/static/chunks/webpack-d38be8d96a62f950.js" defer=""></script><script src="/_next/static/chunks/framework-ecc4130bc7a58a64.js" defer=""></script><script src="/_next/static/chunks/main-6544ea9c2253dbb8.js" defer=""></script><script src="/_next/static/chunks/pages/_app-bc308dff5ed968a0.js" defer=""></script><script src="/_next/static/chunks/pages/_error-77823ddac6993d35.js" defer=""></script><script src="/_next/static/19rvfDwdbSy1sUDw_LtUo/_buildManifest.js" defer=""></script><script src="/_next/static/19rvfDwdbSy1sUDw_LtUo/_ssgManifest.js" defer=""></script></head><body><noscript><div class="no-js"><div class="no-js-content"><h1>😅 需要JavaScript</h1><p>此应用需要JavaScript才能正常运行。请启用JavaScript后重新加载页面。</p></div></div></noscript><div id="loading-indicator" class="loading-indicator"><div class="loading-spinner"></div><div>正在加载待办清单...</div></div><div id="__next"><div style="font-family:system-ui,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;;height:100vh;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="line-height:48px"><style>body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}</style><h1 class="next-error-h1" style="display:inline-block;margin:0 20px 0 0;padding-right:23px;font-size:24px;font-weight:500;vertical-align:top">404</h1><div style="display:inline-block"><h2 style="font-size:14px;font-weight:400;line-height:28px">This page could not be found<!-- -->.</h2></div></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"statusCode":404}},"page":"/_error","query":{},"buildId":"19rvfDwdbSy1sUDw_LtUo","nextExport":true,"isFallback":false,"gip":true,"scriptLoader":[]}</script><script>
+                window.addEventListener('DOMContentLoaded', function() {
+                  var loader = document.getElementById('loading-indicator');
+                  if (loader) {
+                    loader.style.display = 'none';
+                  }
+                });
+              </script></body></html>
