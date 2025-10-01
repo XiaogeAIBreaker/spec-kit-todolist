@@ -1,56 +1,56 @@
 ---
-description: Execute the implementation plan by processing and executing all tasks defined in tasks.md
+description: 通过处理和执行 tasks.md 中定义的所有任务来执行实施计划
 ---
 
-The user input can be provided directly by the agent or as a command argument - you **MUST** consider it before proceeding with the prompt (if not empty).
+用户输入可以由代理直接提供或作为命令参数提供 - 在继续执行提示之前，您**必须**考虑它（如果不为空）。
 
-User input:
+用户输入：
 
 $ARGUMENTS
 
-1. Run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute.
+1. 从仓库根目录运行 `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks` 并解析 FEATURE_DIR 和 AVAILABLE_DOCS 列表。所有路径必须是绝对路径。
 
-2. Load and analyze the implementation context:
-   - **REQUIRED**: Read tasks.md for the complete task list and execution plan
-   - **REQUIRED**: Read plan.md for tech stack, architecture, and file structure
-   - **IF EXISTS**: Read data-model.md for entities and relationships
-   - **IF EXISTS**: Read contracts/ for API specifications and test requirements
-   - **IF EXISTS**: Read research.md for technical decisions and constraints
-   - **IF EXISTS**: Read quickstart.md for integration scenarios
+2. 加载并分析实施上下文：
+   - **必需**：阅读 tasks.md 以获取完整的任务列表和执行计划
+   - **必需**：阅读 plan.md 以获取技术栈、架构和文件结构
+   - **如果存在**：阅读 data-model.md 以获取实体和关系
+   - **如果存在**：阅读 contracts/ 以获取 API 规范和测试需求
+   - **如果存在**：阅读 research.md 以获取技术决策和约束
+   - **如果存在**：阅读 quickstart.md 以获取集成场景
 
-3. Parse tasks.md structure and extract:
-   - **Task phases**: Setup, Tests, Core, Integration, Polish
-   - **Task dependencies**: Sequential vs parallel execution rules
-   - **Task details**: ID, description, file paths, parallel markers [P]
-   - **Execution flow**: Order and dependency requirements
+3. 解析 tasks.md 结构并提取：
+   - **任务阶段**：设置、测试、核心、集成、完善
+   - **任务依赖**：顺序 vs 并行执行规则
+   - **任务详情**：ID、描述、文件路径、并行标记 [P]
+   - **执行流程**：顺序和依赖需求
 
-4. Execute implementation following the task plan:
-   - **Phase-by-phase execution**: Complete each phase before moving to the next
-   - **Respect dependencies**: Run sequential tasks in order, parallel tasks [P] can run together  
-   - **Follow TDD approach**: Execute test tasks before their corresponding implementation tasks
-   - **File-based coordination**: Tasks affecting the same files must run sequentially
-   - **Validation checkpoints**: Verify each phase completion before proceeding
+4. 按照任务计划执行实施：
+   - **逐阶段执行**：在进入下一阶段之前完成每个阶段
+   - **尊重依赖关系**：按顺序运行顺序任务，并行任务 [P] 可以一起运行
+   - **遵循 TDD 方法**：在相应的实施任务之前执行测试任务
+   - **基于文件的协调**：影响相同文件的任务必须按顺序运行
+   - **验证检查点**：在继续之前验证每个阶段完成
 
-5. Implementation execution rules:
-   - **Setup first**: Initialize project structure, dependencies, configuration
-   - **Tests before code**: If you need to write tests for contracts, entities, and integration scenarios
-   - **Core development**: Implement models, services, CLI commands, endpoints
-   - **Integration work**: Database connections, middleware, logging, external services
-   - **Polish and validation**: Unit tests, performance optimization, documentation
+5. 实施执行规则：
+   - **首先设置**：初始化项目结构、依赖项、配置
+   - **代码之前的测试**：如果您需要为合约、实体和集成场景编写测试
+   - **核心开发**：实现模型、服务、CLI 命令、端点
+   - **集成工作**：数据库连接、中间件、日志记录、外部服务
+   - **完善和验证**：单元测试、性能优化、文档
 
-6. Progress tracking and error handling:
-   - Report progress after each completed task
-   - Halt execution if any non-parallel task fails
-   - For parallel tasks [P], continue with successful tasks, report failed ones
-   - Provide clear error messages with context for debugging
-   - Suggest next steps if implementation cannot proceed
-   - **IMPORTANT** For completed tasks, make sure to mark the task off as [X] in the tasks file.
+6. 进度跟踪和错误处理：
+   - 在每个完成的任务后报告进度
+   - 如果任何非并行任务失败，停止执行
+   - 对于并行任务 [P]，继续成功的任务，报告失败的任务
+   - 提供清晰的错误消息和上下文以进行调试
+   - 如果实施无法继续，建议下一步
+   - **重要** 对于已完成的任务，确保在任务文件中将任务标记为 [X]。
 
-7. Completion validation:
-   - Verify all required tasks are completed
-   - Check that implemented features match the original specification
-   - Validate that tests pass and coverage meets requirements
-   - Confirm the implementation follows the technical plan
-   - Report final status with summary of completed work
+7. 完成验证：
+   - 验证所有必需的任务都已完成
+   - 检查实施的功能是否与原始规格匹配
+   - 验证测试通过并且覆盖率满足需求
+   - 确认实施遵循技术计划
+   - 报告最终状态，总结已完成的工作
 
-Note: This command assumes a complete task breakdown exists in tasks.md. If tasks are incomplete or missing, suggest running `/tasks` first to regenerate the task list.
+注意：此命令假设 tasks.md 中存在完整的任务分解。如果任务不完整或缺失，建议首先运行 `/tasks` 以重新生成任务列表。

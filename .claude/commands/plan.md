@@ -1,43 +1,43 @@
 ---
-description: Execute the implementation planning workflow using the plan template to generate design artifacts.
+description: 使用计划模板执行实施计划工作流以生成设计工件。
 ---
 
-The user input to you can be provided directly by the agent or as a command argument - you **MUST** consider it before proceeding with the prompt (if not empty).
+用户输入可以由代理直接提供或作为命令参数提供 - 在继续执行提示之前，您**必须**考虑它（如果不为空）。
 
-User input:
+用户输入：
 
 $ARGUMENTS
 
-Given the implementation details provided as an argument, do this:
+给定作为参数提供的实施细节，执行以下操作：
 
-1. Run `.specify/scripts/bash/setup-plan.sh --json` from the repo root and parse JSON for FEATURE_SPEC, IMPL_PLAN, SPECS_DIR, BRANCH. All future file paths must be absolute.
-   - BEFORE proceeding, inspect FEATURE_SPEC for a `## Clarifications` section with at least one `Session` subheading. If missing or clearly ambiguous areas remain (vague adjectives, unresolved critical choices), PAUSE and instruct the user to run `/clarify` first to reduce rework. Only continue if: (a) Clarifications exist OR (b) an explicit user override is provided (e.g., "proceed without clarification"). Do not attempt to fabricate clarifications yourself.
-2. Read and analyze the feature specification to understand:
-   - The feature requirements and user stories
-   - Functional and non-functional requirements
-   - Success criteria and acceptance criteria
-   - Any technical constraints or dependencies mentioned
+1. 从仓库根目录运行 `.specify/scripts/bash/setup-plan.sh --json` 并解析 JSON 以获取 FEATURE_SPEC、IMPL_PLAN、SPECS_DIR、BRANCH。所有未来的文件路径必须是绝对路径。
+   - 在继续之前，检查 FEATURE_SPEC 是否有 `## 澄清` 部分和至少一个 `Session` 子标题。如果缺失或明显存在模糊领域（模糊形容词、未解决的关键选择），暂停并指示用户首先运行 `/clarify` 以减少返工。仅在以下情况下继续：(a) 存在澄清 或 (b) 提供了明确的用户覆盖（例如，"不澄清继续"）。不要尝试自己编造澄清。
+2. 阅读并分析功能规格以了解：
+   - 功能需求和用户故事
+   - 功能和非功能需求
+   - 成功标准和验收标准
+   - 提到的任何技术约束或依赖关系
 
-3. Read the constitution at `.specify/memory/constitution.md` to understand constitutional requirements.
+3. 阅读 `.specify/memory/constitution.md` 中的宪章以了解宪章要求。
 
-4. Execute the implementation plan template:
-   - Load `.specify/templates/plan-template.md` (already copied to IMPL_PLAN path)
-   - Set Input path to FEATURE_SPEC
-   - Run the Execution Flow (main) function steps 1-9
-   - The template is self-contained and executable
-   - Follow error handling and gate checks as specified
-   - Let the template guide artifact generation in $SPECS_DIR:
-     * Phase 0 generates research.md
-     * Phase 1 generates data-model.md, contracts/, quickstart.md
-     * Phase 2 generates tasks.md
-   - Incorporate user-provided details from arguments into Technical Context: $ARGUMENTS
-   - Update Progress Tracking as you complete each phase
+4. 执行实施计划模板：
+   - 加载 `.specify/templates/plan-template.md`（已复制到 IMPL_PLAN 路径）
+   - 将输入路径设置为 FEATURE_SPEC
+   - 运行执行流程（main）函数步骤 1-9
+   - 模板是自包含的且可执行的
+   - 按照指定遵循错误处理和门控检查
+   - 让模板指导在 $SPECS_DIR 中生成工件：
+     * 阶段 0 生成 research.md
+     * 阶段 1 生成 data-model.md、contracts/、quickstart.md
+     * 阶段 2 生成 tasks.md
+   - 将参数中用户提供的详细信息合并到技术上下文中：$ARGUMENTS
+   - 在完成每个阶段时更新进度跟踪
 
-5. Verify execution completed:
-   - Check Progress Tracking shows all phases complete
-   - Ensure all required artifacts were generated
-   - Confirm no ERROR states in execution
+5. 验证执行完成：
+   - 检查进度跟踪显示所有阶段都已完成
+   - 确保已生成所有必需的工件
+   - 确认执行中没有错误状态
 
-6. Report results with branch name, file paths, and generated artifacts.
+6. 报告结果，包括分支名称、文件路径和生成的工件。
 
-Use absolute paths with the repository root for all file operations to avoid path issues.
+对所有文件操作使用带有仓库根目录的绝对路径，以避免路径问题。

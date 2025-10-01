@@ -1,21 +1,21 @@
 ---
-description: Create or update the feature specification from a natural language feature description.
+description: 从自然语言功能描述创建或更新功能规格。
 ---
 
-The user input to you can be provided directly by the agent or as a command argument - you **MUST** consider it before proceeding with the prompt (if not empty).
+用户输入可以由代理直接提供或作为命令参数提供 - 在继续执行提示之前，您**必须**考虑它（如果不为空）。
 
-User input:
+用户输入：
 
 $ARGUMENTS
 
-The text the user typed after `/specify` in the triggering message **is** the feature description. Assume you always have it available in this conversation even if `$ARGUMENTS` appears literally below. Do not ask the user to repeat it unless they provided an empty command.
+用户在触发消息中在 `/specify` 之后键入的文本**就是**功能描述。假设您在此对话中始终可以使用它，即使 `$ARGUMENTS` 字面上出现在下面。除非他们提供了空命令，否则不要要求用户重复。
 
-Given that feature description, do this:
+给定该功能描述，执行以下操作：
 
-1. Run the script `.specify/scripts/bash/create-new-feature.sh --json "$ARGUMENTS"` from repo root and parse its JSON output for BRANCH_NAME and SPEC_FILE. All file paths must be absolute.
-  **IMPORTANT** You must only ever run this script once. The JSON is provided in the terminal as output - always refer to it to get the actual content you're looking for.
-2. Load `.specify/templates/spec-template.md` to understand required sections.
-3. Write the specification to SPEC_FILE using the template structure, replacing placeholders with concrete details derived from the feature description (arguments) while preserving section order and headings.
-4. Report completion with branch name, spec file path, and readiness for the next phase.
+1. 从仓库根目录运行脚本 `.specify/scripts/bash/create-new-feature.sh --json "$ARGUMENTS"` 并解析其 JSON 输出以获取 BRANCH_NAME 和 SPEC_FILE。所有文件路径必须是绝对路径。
+  **重要** 您只能运行此脚本一次。JSON 在终端中作为输出提供 - 始终参考它以获取您正在寻找的实际内容。
+2. 加载 `.specify/templates/spec-template.md` 以了解必需的部分。
+3. 使用模板结构将规格写入 SPEC_FILE，用从功能描述（参数）派生的具体细节替换占位符，同时保留部分顺序和标题。
+4. 报告完成情况，包括分支名称、规格文件路径和下一阶段的准备情况。
 
-Note: The script creates and checks out the new branch and initializes the spec file before writing.
+注意：脚本在写入之前创建并检出新分支并初始化规格文件。

@@ -1,80 +1,79 @@
 
-# Implementation Plan: [FEATURE]
+# 实施计划：[FEATURE]
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**分支**：`[###-feature-name]` | **日期**：[DATE] | **规格**：[link]
+**输入**：`/specs/[###-feature-name]/spec.md` 中的功能规格
 
-## Execution Flow (/plan command scope)
+## 执行流程（/plan 命令范围）
 ```
-1. Load feature spec from Input path
-   → If not found: ERROR "No feature spec at {path}"
-2. Fill Technical Context (scan for NEEDS CLARIFICATION)
-   → Detect Project Type from file system structure or context (web=frontend+backend, mobile=app+api)
-   → Set Structure Decision based on project type
-3. Fill the Constitution Check section based on the content of the constitution document.
-4. Evaluate Constitution Check section below
-   → If violations exist: Document in Complexity Tracking
-   → If no justification possible: ERROR "Simplify approach first"
-   → Update Progress Tracking: Initial Constitution Check
-5. Execute Phase 0 → research.md
-   → If NEEDS CLARIFICATION remain: ERROR "Resolve unknowns"
-6. Execute Phase 1 → contracts, data-model.md, quickstart.md, agent-specific template file (e.g., `CLAUDE.md` for Claude Code, `.github/copilot-instructions.md` for GitHub Copilot, `GEMINI.md` for Gemini CLI, `QWEN.md` for Qwen Code or `AGENTS.md` for opencode).
-7. Re-evaluate Constitution Check section
-   → If new violations: Refactor design, return to Phase 1
-   → Update Progress Tracking: Post-Design Constitution Check
-8. Plan Phase 2 → Describe task generation approach (DO NOT create tasks.md)
-9. STOP - Ready for /tasks command
+1. 从输入路径加载功能规格
+   → 如果未找到：错误 "在 {path} 找不到功能规格"
+2. 填写技术上下文（扫描 NEEDS CLARIFICATION）
+   → 从文件系统结构或上下文检测项目类型（web=前端+后端，mobile=应用+API）
+   → 根据项目类型设置结构决策
+3. 根据宪章文档的内容填写宪章检查部分
+4. 评估下面的宪章检查部分
+   → 如果存在违规：记录在复杂度跟踪中
+   → 如果无法提供理由：错误 "首先简化方法"
+   → 更新进度跟踪：初始宪章检查
+5. 执行阶段 0 → research.md
+   → 如果仍有 NEEDS CLARIFICATION：错误 "解决未知问题"
+6. 执行阶段 1 → contracts、data-model.md、quickstart.md、特定代理的模板文件（例如，Claude Code 的 `CLAUDE.md`、GitHub Copilot 的 `.github/copilot-instructions.md`、Gemini CLI 的 `GEMINI.md`、Qwen Code 的 `QWEN.md` 或 opencode 的 `AGENTS.md`）
+7. 重新评估宪章检查部分
+   → 如果有新违规：重构设计，返回阶段 1
+   → 更新进度跟踪：设计后宪章检查
+8. 计划阶段 2 → 描述任务生成方法（不要创建 tasks.md）
+9. 停止 - 准备执行 /tasks 命令
 ```
 
-**IMPORTANT**: The /plan command STOPS at step 7. Phases 2-4 are executed by other commands:
-- Phase 2: /tasks command creates tasks.md
-- Phase 3-4: Implementation execution (manual or via tools)
+**重要**：/plan 命令在步骤 7 停止。阶段 2-4 由其他命令执行：
+- 阶段 2：/tasks 命令创建 tasks.md
+- 阶段 3-4：实施执行（手动或通过工具）
 
-## Summary
-[Extract from feature spec: primary requirement + technical approach from research]
+## 摘要
+[从功能规格中提取：主要需求 + 研究中的技术方法]
 
-## Technical Context
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+## 技术上下文
+**语言/版本**：[例如，Python 3.11、Swift 5.9、Rust 1.75 或 NEEDS CLARIFICATION]
+**主要依赖项**：[例如，FastAPI、UIKit、LLVM 或 NEEDS CLARIFICATION]
+**存储**：[如果适用，例如，PostgreSQL、CoreData、文件 或 N/A]
+**测试**：[例如，pytest、XCTest、cargo test 或 NEEDS CLARIFICATION]
+**目标平台**：[例如，Linux 服务器、iOS 15+、WASM 或 NEEDS CLARIFICATION]
+**项目类型**：[single/web/mobile - 决定源代码结构]
+**性能目标**：[特定领域，例如，1000 req/s、10k lines/sec、60 fps 或 NEEDS CLARIFICATION]
+**约束**：[特定领域，例如，<200ms p95、<100MB 内存、离线可用 或 NEEDS CLARIFICATION]
+**规模/范围**：[特定领域，例如，10k 用户、1M LOC、50 屏幕 或 NEEDS CLARIFICATION]
 
-## Constitution Check
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+## 宪章检查
+*门控：必须在阶段 0 研究之前通过。在阶段 1 设计之后重新检查。*
 
-- [ ] **组件化架构**: 设计确保所有UI元素为可复用React组件，具有明确职责边界
-- [ ] **用户体验优先**: 所有功能以用户体验为首要考虑，界面直观响应迅速
-- [ ] **静态优化**: 充分利用Next.js的SSG/ISR能力，实现性能优化
-- [ ] **数据一致性**: 确保统一的数据源和状态管理，避免重复声明
-- [ ] **类型安全**: 使用TypeScript确保类型安全，避免any类型的使用
+- [ ] **组件化架构**：设计确保所有UI元素为可复用React组件，具有明确职责边界
+- [ ] **用户体验优先**：所有功能以用户体验为首要考虑，界面直观响应迅速
+- [ ] **静态优化**：充分利用Next.js的SSG/ISR能力，实现性能优化
+- [ ] **数据一致性**：确保统一的数据源和状态管理，避免重复声明
+- [ ] **类型安全**：使用TypeScript确保类型安全，避免any类型的使用
 
-## Project Structure
+## 项目结构
 
-### Documentation (this feature)
+### 文档（此功能）
 ```
 specs/[###-feature]/
-├── plan.md              # This file (/plan command output)
-├── research.md          # Phase 0 output (/plan command)
-├── data-model.md        # Phase 1 output (/plan command)
-├── quickstart.md        # Phase 1 output (/plan command)
-├── contracts/           # Phase 1 output (/plan command)
-└── tasks.md             # Phase 2 output (/tasks command - NOT created by /plan)
+├── plan.md              # 本文件（/plan 命令输出）
+├── research.md          # 阶段 0 输出（/plan 命令）
+├── data-model.md        # 阶段 1 输出（/plan 命令）
+├── quickstart.md        # 阶段 1 输出（/plan 命令）
+├── contracts/           # 阶段 1 输出（/plan 命令）
+└── tasks.md             # 阶段 2 输出（/tasks 命令 - 不由 /plan 创建）
 ```
 
-### Source Code (repository root)
+### 源代码（仓库根目录）
 <!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
+  需要操作：用此功能的具体布局替换下面的占位符树。删除未使用的选项并
+  用真实路径（例如，apps/admin、packages/something）扩展所选结构。
+  交付的计划不得包含选项标签。
 -->
 ```
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
+# [如果未使用则删除] 选项 1：单项目（默认）
 src/
 ├── models/
 ├── services/
@@ -86,7 +85,7 @@ tests/
 ├── integration/
 └── unit/
 
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
+# [如果未使用则删除] 选项 2：Web 应用（当检测到"frontend" + "backend"时）
 backend/
 ├── src/
 │   ├── models/
@@ -101,123 +100,122 @@ frontend/
 │   └── services/
 └── tests/
 
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
+# [如果未使用则删除] 选项 3：移动应用 + API（当检测到"iOS/Android"时）
 api/
-└── [same as backend above]
+└── [与上面的 backend 相同]
 
 ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+└── [平台特定结构：功能模块、UI 流程、平台测试]
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**结构决策**：[记录所选结构并引用上面捕获的真实目录]
 
-## Phase 0: Outline & Research
-1. **Extract unknowns from Technical Context** above:
-   - For each NEEDS CLARIFICATION → research task
-   - For each dependency → best practices task
-   - For each integration → patterns task
+## 阶段 0：概述和研究
+1. **从上面的技术上下文中提取未知项**：
+   - 对于每个 NEEDS CLARIFICATION → 研究任务
+   - 对于每个依赖项 → 最佳实践任务
+   - 对于每个集成 → 模式任务
 
-2. **Generate and dispatch research agents**:
+2. **生成并分派研究代理**：
    ```
-   For each unknown in Technical Context:
-     Task: "Research {unknown} for {feature context}"
-   For each technology choice:
-     Task: "Find best practices for {tech} in {domain}"
+   对于技术上下文中的每个未知项：
+     任务："为 {功能上下文} 研究 {未知项}"
+   对于每个技术选择：
+     任务："在 {领域} 中查找 {技术} 的最佳实践"
    ```
 
-3. **Consolidate findings** in `research.md` using format:
-   - Decision: [what was chosen]
-   - Rationale: [why chosen]
-   - Alternatives considered: [what else evaluated]
+3. **在 `research.md` 中整合发现**，使用格式：
+   - 决策：[选择了什么]
+   - 理由：[为什么选择]
+   - 考虑的替代方案：[还评估了什么]
 
-**Output**: research.md with all NEEDS CLARIFICATION resolved
+**输出**：research.md，所有 NEEDS CLARIFICATION 已解决
 
-## Phase 1: Design & Contracts
-*Prerequisites: research.md complete*
+## 阶段 1：设计和合约
+*前置条件：research.md 完成*
 
-1. **Extract entities from feature spec** → `data-model.md`:
-   - Entity name, fields, relationships
-   - Validation rules from requirements
-   - State transitions if applicable
+1. **从功能规格中提取实体** → `data-model.md`：
+   - 实体名称、字段、关系
+   - 需求中的验证规则
+   - 状态转换（如果适用）
 
-2. **Generate API contracts** from functional requirements:
-   - For each user action → endpoint
-   - Use standard REST/GraphQL patterns
-   - Output OpenAPI/GraphQL schema to `/contracts/`
+2. **从功能需求生成 API 合约**：
+   - 对于每个用户操作 → 端点
+   - 使用标准 REST/GraphQL 模式
+   - 将 OpenAPI/GraphQL schema 输出到 `/contracts/`
 
-3. **Generate contract tests** from contracts:
-   - One test file per endpoint
-   - Assert request/response schemas
-   - Tests must fail (no implementation yet)
+3. **从合约生成合约测试**：
+   - 每个端点一个测试文件
+   - 断言请求/响应模式
+   - 测试必须失败（尚无实现）
 
-4. **Extract test scenarios** from user stories:
-   - Each story → integration test scenario
-   - Quickstart test = story validation steps
+4. **从用户故事中提取测试场景**：
+   - 每个故事 → 集成测试场景
+   - 快速开始测试 = 故事验证步骤
 
-5. **Update agent file incrementally** (O(1) operation):
-   - Run `.specify/scripts/bash/update-agent-context.sh claude`
-     **IMPORTANT**: Execute it exactly as specified above. Do not add or remove any arguments.
-   - If exists: Add only NEW tech from current plan
-   - Preserve manual additions between markers
-   - Update recent changes (keep last 3)
-   - Keep under 150 lines for token efficiency
-   - Output to repository root
+5. **增量更新代理文件**（O(1) 操作）：
+   - 运行 `.specify/scripts/bash/update-agent-context.sh claude`
+     **重要**：完全按照上面指定的方式执行它。不要添加或删除任何参数。
+   - 如果存在：仅添加当前计划中的新技术
+   - 保留标记之间的手动添加
+   - 更新最近的更改（保留最后 3 个）
+   - 保持在 150 行以下以提高令牌效率
+   - 输出到仓库根目录
 
-**Output**: data-model.md, /contracts/*, failing tests, quickstart.md, agent-specific file
+**输出**：data-model.md、/contracts/*、失败的测试、quickstart.md、特定代理的文件
 
-## Phase 2: Task Planning Approach
-*This section describes what the /tasks command will do - DO NOT execute during /plan*
+## 阶段 2：任务规划方法
+*本节描述 /tasks 命令将执行的操作 - 在 /plan 期间不要执行*
 
-**Task Generation Strategy**:
-- Load `.specify/templates/tasks-template.md` as base
-- Generate tasks from Phase 1 design docs (contracts, data model, quickstart)
-- Each contract → contract test task [P]
-- Each entity → model creation task [P] 
-- Each user story → integration test task
-- Implementation tasks to make tests pass
+**任务生成策略**：
+- 加载 `.specify/templates/tasks-template.md` 作为基础
+- 从阶段 1 设计文档（合约、数据模型、快速开始）生成任务
+- 每个合约 → 合约测试任务 [P]
+- 每个实体 → 模型创建任务 [P]
+- 每个用户故事 → 集成测试任务
+- 使测试通过的实现任务
 
-**Ordering Strategy**:
-- TDD order: Tests before implementation 
-- Dependency order: Models before services before UI
-- Mark [P] for parallel execution (independent files)
+**排序策略**：
+- TDD 顺序：测试先于实现
+- 依赖顺序：模型先于服务先于 UI
+- 为并行执行标记 [P]（独立文件）
 
-**Estimated Output**: 25-30 numbered, ordered tasks in tasks.md
+**预估输出**：tasks.md 中的 25-30 个编号、有序的任务
 
-**IMPORTANT**: This phase is executed by the /tasks command, NOT by /plan
+**重要**：此阶段由 /tasks 命令执行，而不是由 /plan 执行
 
-## Phase 3+: Future Implementation
-*These phases are beyond the scope of the /plan command*
+## 阶段 3+：未来实施
+*这些阶段超出了 /plan 命令的范围*
 
-**Phase 3**: Task execution (/tasks command creates tasks.md)  
-**Phase 4**: Implementation (execute tasks.md following constitutional principles)  
-**Phase 5**: Validation (run tests, execute quickstart.md, performance validation)
+**阶段 3**：任务执行（/tasks 命令创建 tasks.md）
+**阶段 4**：实施（遵循宪章原则执行 tasks.md）
+**阶段 5**：验证（运行测试、执行 quickstart.md、性能验证）
 
-## Complexity Tracking
-*Fill ONLY if Constitution Check has violations that must be justified*
+## 复杂度跟踪
+*仅在宪章检查有必须证明的违规时填写*
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| 违规 | 为什么需要 | 被拒绝的更简单替代方案因为 |
+|------|-----------|---------------------------|
+| [例如，第4个项目] | [当前需求] | [为什么3个项目不够] |
+| [例如，Repository 模式] | [具体问题] | [为什么直接数据库访问不够] |
 
 
-## Progress Tracking
-*This checklist is updated during execution flow*
+## 进度跟踪
+*此检查清单在执行流程期间更新*
 
-**Phase Status**:
-- [ ] Phase 0: Research complete (/plan command)
-- [ ] Phase 1: Design complete (/plan command)
-- [ ] Phase 2: Task planning complete (/plan command - describe approach only)
-- [ ] Phase 3: Tasks generated (/tasks command)
-- [ ] Phase 4: Implementation complete
-- [ ] Phase 5: Validation passed
+**阶段状态**：
+- [ ] 阶段 0：研究完成（/plan 命令）
+- [ ] 阶段 1：设计完成（/plan 命令）
+- [ ] 阶段 2：任务规划完成（/plan 命令 - 仅描述方法）
+- [ ] 阶段 3：任务已生成（/tasks 命令）
+- [ ] 阶段 4：实施完成
+- [ ] 阶段 5：验证通过
 
-**Gate Status**:
-- [ ] Initial Constitution Check: PASS
-- [ ] Post-Design Constitution Check: PASS
-- [ ] All NEEDS CLARIFICATION resolved
-- [ ] Complexity deviations documented
+**门控状态**：
+- [ ] 初始宪章检查：通过
+- [ ] 设计后宪章检查：通过
+- [ ] 所有 NEEDS CLARIFICATION 已解决
+- [ ] 复杂度偏差已记录
 
 ---
-*Based on Constitution v1.0.0 - See `/memory/constitution.md`*
+*基于宪章 v1.0.0 - 参见 `/memory/constitution.md`*
