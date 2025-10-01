@@ -531,8 +531,9 @@ body {
   top: 6px;
 }
 
-/* 主题色彩变量（为未来CSS变量迁移做准备） */
+/* 玻璃拟态主题色彩变量 */
 :root {
+  /* 原有颜色 */
   --color-primary: #6366f1;
   --color-secondary: #ec4899;
   --color-success: #10b981;
@@ -544,17 +545,41 @@ body {
   --color-text-secondary: #6b7280;
   --color-border: #e5e7eb;
 
+  /* 玻璃拟态主题变量 */
+  --glass-background: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-blur: 10px;
+  --glass-border-radius: 16px;
+  --glass-shadow: rgba(0, 0, 0, 0.1);
+
+  /* 间距 */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
 
+  /* 圆角 */
   --border-radius-sm: 0.25rem;
   --border-radius-md: 0.5rem;
   --border-radius-lg: 0.75rem;
 
+  /* 阴影 */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* 动画时长 */
+  --animation-fast: 100ms;
+  --animation-normal: 300ms;
+  --animation-slow: 500ms;
+}
+
+/* 玻璃拟态背景增强 */
+.glass-box {
+  background: var(--glass-background);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-border-radius);
+  box-shadow: 0 8px 32px var(--glass-shadow);
 }

@@ -8,27 +8,11 @@ import styled, { css, keyframes } from 'styled-components';
 import { CompletionCelebrationProps } from '@/types/components';
 import { defaultTheme } from '@/types/components';
 
-// 庆祝动画定义
-const celebrationEnter = keyframes`
-  0% {
-    opacity: 0;
-    transform: scale(0.5) translateY(50px);
-  }
-  20% {
-    opacity: 1;
-    transform: scale(1.1) translateY(-10px);
-  }
-  40% {
-    transform: scale(0.95) translateY(0);
-  }
-  60% {
-    transform: scale(1.02) translateY(-5px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-`;
+import { completionAnimation } from '@/styles/animations';
+import { glassmorphismTheme } from '@/styles/theme';
+
+// 庆祝动画定义 - 使用主题配置的完成动画
+const celebrationEnter = completionAnimation;
 
 const celebrationExit = keyframes`
   0% {
@@ -125,7 +109,7 @@ const CelebrationContainer = styled.div<{ $show: boolean }>`
   overflow: hidden;
 
   ${props => props.$show && css`
-    animation: ${celebrationEnter} 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: ${celebrationEnter} ${glassmorphismTheme.animations.duration.slow} ${glassmorphismTheme.animations.easing.spring};
   `}
 
   &::before {

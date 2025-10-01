@@ -9,6 +9,7 @@ import { TodoListProps } from '@/types/components';
 import { defaultTheme } from '@/types/components';
 import TodoItem from '@/components/TodoItem';
 import EmptyState from '@/components/EmptyState';
+import { GlassBox } from '@/components/GlassBox';
 
 // 动画定义
 const listEnter = keyframes`

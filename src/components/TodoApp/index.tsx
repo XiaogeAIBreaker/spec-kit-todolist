@@ -10,6 +10,7 @@ import { useTodos } from '@/hooks/useTodos';
 import AddTodoForm from '@/components/AddTodoForm';
 import TodoList from '@/components/TodoList';
 import CompletionCelebration from '@/components/CompletionCelebration';
+import { GlassBox } from '@/components/GlassBox';
 
 // 全局样式
 const GlobalStyle = createGlobalStyle`
@@ -109,12 +110,7 @@ const AppContainer = styled.div`
 const AppContent = styled.main`
   max-width: 800px;
   margin: 0 auto;
-  background: ${defaultTheme.colors.background};
-  border-radius: ${defaultTheme.borderRadius.lg};
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
 `;
 
 const AppHeader = styled.header`
@@ -375,12 +371,13 @@ export const TodoApp: React.FC = () => {
       <GlobalStyle />
       <AppContainer>
         <AppContent>
-          <AppHeader>
-            <AppTitle>✨ 待办清单</AppTitle>
-            <AppSubtitle>让每一天都充满成就感</AppSubtitle>
-          </AppHeader>
+          <GlassBox elevated>
+            <AppHeader>
+              <AppTitle>✨ 待办清单</AppTitle>
+              <AppSubtitle>让每一天都充满成就感</AppSubtitle>
+            </AppHeader>
 
-          <AppBody>
+            <AppBody>
             {appError && (
               <ErrorBoundary>
                 <ErrorTitle>😵 出错了</ErrorTitle>
@@ -406,7 +403,8 @@ export const TodoApp: React.FC = () => {
               onDeleteTodo={handleDeleteTodo}
               isLoading={isLoading}
             />
-          </AppBody>
+            </AppBody>
+          </GlassBox>
         </AppContent>
 
         {/* 加载覆盖层 */}
